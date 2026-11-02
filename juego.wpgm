@@ -1,0 +1,20 @@
+import example.*
+import wollok.game.*
+
+program Llamita {
+	game.title("LLamita")
+	game.height(10)
+	game.width(10)
+	
+	game.addVisual(ollama)
+	game.addVisualCharacter(wko)
+
+	keyboard.space().onPressDo({ 
+		game.say(wko, "Hola") 
+		ollama.send("Hola")
+	})
+
+	game.tick(200, { ollama.flush() }, true).start()
+	
+	game.start()
+}
