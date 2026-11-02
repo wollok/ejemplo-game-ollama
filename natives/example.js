@@ -19,6 +19,7 @@ const ollama = {
       model,
       messages: [
         { role: 'system', content: 'Sos un personaje de un videojuego. Los jugadores te van a hablar. Hacé respuestas cortas, de no más de 30 caracteres.' },
+        { role: 'system', content: 'Además de la respuesta corta, dame 3 opciones de posibles preguntas que te podrían hacer. Todo separado por \n' },
         { role: 'user', content: message }
       ],
     }).then((response) => {
