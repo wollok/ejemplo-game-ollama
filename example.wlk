@@ -1,6 +1,6 @@
 object wko {
   var property position = game.center()
-  const property image = "wko.png"
+  const property image = "pepita.png"
   
   method sendToLlama(message) {
     

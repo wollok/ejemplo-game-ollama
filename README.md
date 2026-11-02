@@ -1,19 +1,16 @@
+## Hablá con la Llamita
 
+Siempre tenés 3 opciones para decir, la Llama te va a contestar y ofrecer nuevas 3 opciones.
 
-# Pixel Art
+#### Contruí tu historia, cada juego es distinto al anterior!
 
-Herramienta de pixel art hecha con Wollok Game. El tablero mide 500 × 500
-píxeles y está formado por 50 × 50 celdas de 10 × 10 píxeles.
+![demo](./screenshot.png)
 
-- Hacé clic en una celda para alternarla entre blanco y negro.
-- Presioná **C** para limpiar el tablero.
+### ¿Cómo funciona?
 
-Ejecutá `mainExample.wpgm` desde Wollok para iniciar el juego.
+La nativa `ollama` envía mensajes al servidor local (`http://localhost:11434`) usando el modelo `gemma4:latest`. 
 
-## Ollama local
-
-La nativa `ollama` envía mensajes al servidor local (`http://localhost:11434`)
-usando el modelo `gemma4:latest`. Desde Wollok:
+Desde Wollok:
 
 ```wollok
 ollama.send("Hola, ¿cómo estás?")
