@@ -9,9 +9,11 @@ program Llamita {
 	game.addVisual(ollama)
 	game.addVisualCharacter(wko)
 
-	keyboard.space().onPressDo({ 
-		game.say(wko, "Hola") 
-		ollama.send("Hola")
+	(0..2).forEach({n => 
+		const opcion = opciones.get(n)
+		game.addVisual(opcion)
+		keyboard.num(n + 1).onPressDo({ opcion.seleccionar() })
+	
 	})
 
 	game.tick(200, { ollama.flush() }, true).start()
