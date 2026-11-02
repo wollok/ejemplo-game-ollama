@@ -4,8 +4,8 @@ object wko {
 }
 
 object ollama {
-  var property position = game.center()
-  const property image = "black.png"
+  var property position = game.origin()
+  const property image = "llama.png"
 
   method send(message) native
   method response() native
