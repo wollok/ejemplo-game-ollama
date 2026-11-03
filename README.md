@@ -19,4 +19,6 @@ ollama.response()
 
 La generación es asíncrona: `response()` devuelve un mensaje de espera mientras
 Ollama procesa la consulta. Volvé a llamarlo para obtener la respuesta. Si el
-pedido falla, la nativa informa el error al consultar `response()`.
+pedido falla, la nativa informa el error al consultar `response()`. Cada
+consulta incluye el historial completo de mensajes del jugador y respuestas de
+la llama para mantener el contexto de la conversación.

@@ -6,6 +6,13 @@ let data
 let error
 let pending = false
 let latestRequest = 0
+let requestQueue = Promise.resolve()
+
+const systemMessages = [
+  { role: 'system', content: 'Sos un personaje de un videojuego. Los jugadores te van a hablar. Vas a recibir la convesación previa. Hacé respuestas cortas, de no más de 30 caracteres.' },
+  { role: 'system', content: 'Además de la respuesta corta, dame 3 opciones de posibles de mensajes que te podrían hacer. Todo separado por \n' },
+]
+const conversation = []
 
 const ollama = {
   *send(_self, wMessage) {
@@ -15,16 +22,17 @@ const ollama = {
     error = undefined
     pending = true
 
-    client.chat({
-      model,
-      messages: [
-        { role: 'system', content: 'Sos un personaje de un videojuego. Los jugadores te van a hablar. Hacé respuestas cortas, de no más de 30 caracteres.' },
-        { role: 'system', content: 'Además de la respuesta corta, dame 3 opciones de posibles preguntas que te podrían hacer. Todo separado por \n' },
-        { role: 'user', content: message }
-      ],
-    }).then((response) => {
+    requestQueue = requestQueue.then(async () => {
+      conversation.push({ role: 'user', content: message })
+      const response = await client.chat({
+        model,
+        messages: [...systemMessages, ...conversation],
+      })
+      const answer = response.message.content
+      conversation.push({ role: 'assistant', content: answer })
+
       if (request !== latestRequest) return
-      data = response.message.content
+      data = answer
       pending = false
     }).catch((requestError) => {
       if (request !== latestRequest) return

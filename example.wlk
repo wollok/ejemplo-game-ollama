@@ -1,10 +1,6 @@
 object wko {
   var property position = game.center()
   const property image = "pepita.png"
-  
-  method sendToLlama(message) {
-    
-  }
 }
 
 class Opcion {
@@ -39,10 +35,6 @@ object ollama {
     const res = self.response()
     if (res != null) {
       const respuesta = res.split("\n").filter({text => not text.isEmpty()})
-
-        // .replace("|", "\n")
-        // .replace("/", "\n")
-        // .replace("\\", "\n")
 
       console.println(respuesta)
       game.say(self, respuesta.get(0))
