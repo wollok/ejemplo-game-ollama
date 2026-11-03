@@ -16,6 +16,8 @@ program Llamita {
 	
 	})
 
+	// ollama.debug("Preguntale cosas directamente para saber capacidades de la IA.")
+
 	game.tick(200, { ollama.flush() }, true).start()
 	
 	game.start()

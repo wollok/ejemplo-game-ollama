@@ -41,6 +41,18 @@ const ollama = {
     })
   },
 
+  *debug(_self, wMessage) {
+    const message = wMessage.innerString
+    requestQueue = requestQueue.then(async () => {
+      const response = await client.chat({
+        model,
+        messages: [{ role: 'user', content: message }],
+      })
+      const answer = response.message.content
+      data = answer
+    })
+  },
+
   *response(_self) {
     // if (pending) return yield* this.reify('Esperando respuesta de Ollama...')
     // if (error) throw new Error(`Error al consultar Ollama: ${error}`)

@@ -28,6 +28,7 @@ object ollama {
   const property image = "llama.png"
   
   method send(message) native
+  method debug(message) native
   
   method response() native
   
